@@ -33,9 +33,10 @@ class Controller:
                             self.root_node = self.tree.insert(self.root_node, val)
                         elif name == "Delete":
                             self.root_node = self.tree.delete(self.root_node, val)
-                        elif name == "Clear":
-                            self.root_node = None
+                    if name == "Clear":
+                        self.root_node = None
                     self.user_input = ""
+
                     # After update, ask visualizer to redraw 
                     # (in main loop)
 
