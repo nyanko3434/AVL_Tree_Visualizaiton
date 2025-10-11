@@ -1,5 +1,4 @@
 import pygame
-import pygame.freetype
 from .layout import compute_positions
 
 NODE_RADIUS = 20
@@ -10,8 +9,7 @@ LINE_COLOR = (200, 200, 200)
 class AVLVisualizer:
     def __init__(self, surface):
         self.surface = surface
-        pygame.freetype.init()
-        self.font = pygame.freetype.SysFont(None, FONT_SIZE)
+        self.font = pygame.font.SysFont(None, FONT_SIZE)
 
     def draw(self, root):
         self.surface.fill((0, 0, 0))  
@@ -27,11 +25,9 @@ class AVLVisualizer:
             if node.right:
                 x2, y2 = positions[node.right]
                 pygame.draw.line(self.surface, LINE_COLOR, (x, y), (x2, y2), 2)
-        # draw nodes
+        # draw nodes 
         for node, (x, y) in positions.items():
             pygame.draw.circle(self.surface, (50, 150, 200), (int(x), int(y)), NODE_RADIUS)
-            # text_surf = self.font.render(str(node.key), True, FONT_COLOR)
-            # text_rect = text_surf.get_rect(center=(x, y))
-            # self.surface.blit(text_surf, text_rect)
-            self.font.render_to(self.surface, (int(x), int(y)), str(node.key), FONT_COLOR, size=FONT_SIZE, origin="center")
-
+            text_surf = self.font.render(str(node.key), True, FONT_COLOR)
+            text_rect = text_surf.get_rect(center=(x, y))
+            self.surface.blit(text_surf, text_rect)
