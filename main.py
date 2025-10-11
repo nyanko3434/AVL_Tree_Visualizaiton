@@ -28,8 +28,13 @@ def main():
         for name, rect in controller.buttons.items():
             pygame.draw.rect(screen, (180, 180, 180), rect)
             
+            if name == "Mode":
+                display_name = controller.mode.upper()
+            else:
+                display_name = name.upper()
+
             font = visualizer.font
-            text_surf = font.render(name, True, (0, 0, 0))
+            text_surf = font.render(display_name, True, (0, 0, 0))
             text_rect = text_surf.get_rect(center=rect.center)
             screen.blit(text_surf, text_rect)
 

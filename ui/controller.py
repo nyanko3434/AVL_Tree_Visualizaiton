@@ -5,21 +5,29 @@ class Controller:
         self.tree = tree
         self.visualizer = visualizer
         self.root_node = None
-        # You may define rectangles for buttons: Insert, Delete, Clear
+
+        self.mode = "insert on enter"
+        self.user_input = ""
+
         self.buttons = {
             "Insert": pygame.Rect(50, 550, 80, 30),
             "Delete": pygame.Rect(150, 550, 80, 30),
             "Clear": pygame.Rect(250, 550, 80, 30),
+            "Mode": pygame.Rect(650, 10, 150, 30)
         }
-        self.user_input = ""  # store string input from keyboard
 
     def handle_event(self, event):
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_BACKSPACE:
                 self.user_input = self.user_input[:-1]
             elif event.key == pygame.K_RETURN:
-                # On Enter, do insert or delete? You might add a mode toggle
-                pass
+                if self.user_input.isdigit():
+                    num = int(self.user_input)
+                    if self.mode == "insert on enter":
+                        self.root_node = self.tree.insert(self.root_node, num)
+                    else:
+                        self.root_node = self.tree.delete(self.root_node, num)
+                    self.user_input = ""
             else:
                 if event.unicode.isdigit():
                     self.user_input += event.unicode
@@ -33,9 +41,12 @@ class Controller:
                             self.root_node = self.tree.insert(self.root_node, val)
                         elif name == "Delete":
                             self.root_node = self.tree.delete(self.root_node, val)
-                    if name == "Clear":
+                        self.user_input = ""
+                    if name == "Mode":
+                        self.mode = "delete on enter" if self.mode == "insert on enter" else "insert on enter"
+                    elif name == "Clear":
                         self.root_node = None
-                    self.user_input = ""
+                        self.user_input = ""
 
                     
 
