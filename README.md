@@ -54,7 +54,7 @@ AVL_Tree_Visualization/
 
 ---
 
-### 🧱 Option 1: Run using the Bash script (recommended)
+### Run using the Bash script
 
 1. Make the script executable:
    ```bash
