@@ -64,4 +64,12 @@ AVL_Tree_Visualization/
    ```bash
    ./run_project.sh
    ```
-   
+
+## User Interface
+
+| Button                      | Function                                                                  |
+| --------------------------- | ------------------------------------------------------------------------- |
+| **Insert**                  | Inserts the number entered in the input field into the AVL tree.          |
+| **Delete**                  | Deletes the number entered in the input field from the AVL tree.          |
+| **Clear**                   | Clears the entire AVL tree.                                               |
+| **Mode (top-right toggle)** | Click to switch between **Insert on Enter** and **Delete on Enter** mode. |
