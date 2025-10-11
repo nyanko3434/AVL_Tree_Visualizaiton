@@ -12,7 +12,7 @@ class AVLVisualizer:
         self.font = pygame.font.SysFont(None, FONT_SIZE)
 
     def draw(self, root):
-        self.surface.fill((0, 0, 0))  # clear background
+        self.surface.fill((0, 0, 0))  
         if root is None:
             return
         positions = {}

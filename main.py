@@ -25,7 +25,6 @@ def main():
         visualizer.draw(controller.root_node)
 
         # Draw UI (buttons, input text)
-        # e.g. draw rectangles around buttons, input text on screen
         for name, rect in controller.buttons.items():
             pygame.draw.rect(screen, (180, 180, 180), rect)
             # draw button text

@@ -37,6 +37,5 @@ class Controller:
                         self.root_node = None
                     self.user_input = ""
 
-                    # After update, ask visualizer to redraw 
-                    # (in main loop)
+                    
 

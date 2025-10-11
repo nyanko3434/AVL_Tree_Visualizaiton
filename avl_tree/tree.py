@@ -7,8 +7,8 @@ class AVLTree:
         T2 = y.left
         y.left = z
         z.right = T2
-        z.height = 1 + max(get_height(z.left), get_height(z.right))
-        y.height = 1 + max(get_height(y.left), get_height(y.right))
+        z.height = get_height(z)
+        y.height = get_height(y)
         return y
 
     def right_rotate(self, z):
@@ -16,8 +16,8 @@ class AVLTree:
         T3 = y.right
         y.right = z
         z.left = T3
-        z.height = 1 + max(get_height(z.left), get_height(z.right))
-        y.height = 1 + max(get_height(y.left), get_height(y.right))
+        z.height = get_height(z)
+        y.height = get_height(y)
         return y
 
     def insert(self, root, key):
@@ -25,10 +25,12 @@ class AVLTree:
             return Node(key)
         elif key < root.key:
             root.left = self.insert(root.left, key)
-        else:
+        elif key > root.key:
             root.right = self.insert(root.right, key)
+        else:
+            return root 
 
-        root.height = 1 + max(get_height(root.left), get_height(root.right))
+        root.height = get_height(root)
         balance = get_balance(root)
 
         # Balance the tree
