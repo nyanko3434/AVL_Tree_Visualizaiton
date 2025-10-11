@@ -21,25 +21,24 @@ def main():
             else:
                 controller.handle_event(event)
 
-        # After events, redraw
+        
         visualizer.draw(controller.root_node)
 
-        # Draw UI (buttons, input text)
+        # Draw UI 
         for name, rect in controller.buttons.items():
             pygame.draw.rect(screen, (180, 180, 180), rect)
-            # draw button text
+            
             font = visualizer.font
             text_surf = font.render(name, True, (0, 0, 0))
             text_rect = text_surf.get_rect(center=rect.center)
             screen.blit(text_surf, text_rect)
 
-        # draw user input string somewhere
+        # draw user input string
         input_surf = visualizer.font.render(controller.user_input, True, (255, 255, 255))
         screen.blit(input_surf, (50, 520))
 
         pygame.display.flip()
-        clock.tick(30)  # limit to 30 FPS
-
+        clock.tick(30)
     pygame.quit()
 
 if __name__ == "__main__":
